@@ -14,7 +14,7 @@ module.exports = {
     header: {
       example:'Authorization',
       description:'The name/key of the header from which to get the token string.',
-      required:true
+      required: true
     },
     secret: {
       example: 'abc123jdhs3h4js',
@@ -53,7 +53,7 @@ module.exports = {
 
 
   fn: function (inputs, exits, env) {
-    var jwtMachine = required('machinepack-jwt');
+    var jwtMachine = require('machinepack-jwt');
     
     var headerVal = env.req.get(inputs.header);
 
