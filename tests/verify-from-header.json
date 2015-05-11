@@ -1,4 +1,10 @@
 {
   "machine": "verify-from-header",
-  "expectations": []
+  "expectations": [
+  	{
+      "todo": true,
+      "using": {},
+      "outcome": "success"
+    }
+  ]
 }
