@@ -34,14 +34,13 @@ module.exports = {
   defaultExit: 'success',
 
   exits: {
-    "error": {
+    error: {
       description: 'Unexpected error occurred while decoding JWT.',
     },
-    "undefined":{
+    nullHeader:{
       description: 'No header with that name present on request.'
     },
-    "success": {
-      variableName: 'result',
+    success: {
       description: 'Token decoded successfully from header.',
       example:{
         email:"test@test.com", 
@@ -69,7 +68,7 @@ module.exports = {
       }
       return exits.success(t);
     }
-    return exits.undefined(); //Header does not exist
+    return exits.nullHeader(); //Header does not exist
   },
 
 
