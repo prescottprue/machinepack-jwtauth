@@ -39,7 +39,7 @@ module.exports = {
     },
     "undefined":{
       description: 'No header with that name present on request.'
-    }
+    },
     "success": {
       variableName: 'result',
       description: 'Token decoded successfully from header.',
@@ -48,7 +48,7 @@ module.exports = {
         name:"test"
       },
       hasDynamicOutputType:true
-    },
+    }
 
   },
 
