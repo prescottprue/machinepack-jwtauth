@@ -1,0 +1,39 @@
+{
+  "name": "machinepack-jwtauth",
+  "version": "0.1.0",
+  "description": "Handle JSON Web Token authentication requests.",
+  "scripts": {
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "keywords": [
+    "JWT Auth",
+    "machines",
+    "machinepack"
+  ],
+  "author": "Prescott Prue",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^3.0.0",
+    "machinepack-jwt": "^0.1.7"
+  },
+  "devDependencies": {
+    "test-machinepack-mocha": "^0.2.2"
+  },
+  "machinepack": {
+    "friendlyName": "JWT Auth",
+    "machineDir": "machines/",
+    "machines": [
+      "verify-from-header"
+    ],
+    "testsUrl": "https://travis-ci.org/"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/prescottprue/machinepack-jwtauth/issues"
+  },
+  "homepage": "https://github.com/prescottprue/machinepack-jwtauth"
+}
