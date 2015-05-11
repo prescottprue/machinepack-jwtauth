@@ -8,7 +8,7 @@
 Handle JSON Web Token authentication requests.
 
 
-## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-jwtauth.svg)](http://badge.fury.io/js/machinepack-jwtauth) [![Build Status](https://travis-ci.org/mikermcneil/machinepack-jwtauth.png?branch=master)](https://travis-ci.org/mikermcneil/machinepack-jwtauth)
+## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-jwtauth.svg)](http://badge.fury.io/js/machinepack-jwtauth) [![Build Status](https://travis-ci.org/prescottprue/machinepack-jwtauth)](https://travis-ci.org/prescottprue/machinepack-jwtauth)
 
 ```sh
 $ npm install machinepack-jwtauth

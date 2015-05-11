@@ -6,12 +6,14 @@
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
   "keywords": [
+    "JWT",
     "JWT Auth",
+    "JSON",
+    "authentication",
     "machines",
     "machinepack"
   ],
   "author": "Prescott Prue",
-  "license": "MIT",
   "dependencies": {
     "machine": "^3.0.0",
     "machinepack-jwt": "^0.1.7"
@@ -25,12 +27,12 @@
     "machines": [
       "verify-from-header"
     ],
-    "testsUrl": "https://travis-ci.org/"
+    "testsUrl": "https://travis-ci.org/https://travis-ci.org/prescottprue/machinepack-jwtauth"
   },
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:prescottprue/machinepack-jwtauth.git"
   },
   "bugs": {
     "url": "https://github.com/prescottprue/machinepack-jwtauth/issues"
