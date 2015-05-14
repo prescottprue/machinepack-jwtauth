@@ -66,7 +66,10 @@ module.exports = {
       } catch(err){
         exits.error(err);
       }
-      return exits.success(t);
+      if(t && typeof t == "object"){
+        return exits.success(t);
+      }
+      return exits.error(new Error('Invalid Token'));
     }
     return exits.nullHeader(); //Header does not exist
   },
