@@ -84,8 +84,10 @@ module.exports = {
       }
       if(inputs.headerPrefix){ //Remove prefix from header if headerPrefix exists
         headerVal.replace(inputs.headerPrefix, ""); //Remove prefix to leave token string
-        decodeParams.token = headerVal;
       }
+      
+      decodeParams.token = headerVal;
+
       try{
         return exits.success(jwtMachine.decode(decodeParams));
       } catch(err){
