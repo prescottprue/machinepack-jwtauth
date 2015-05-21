@@ -1,6 +1,6 @@
 {
   "name": "machinepack-jwtauth",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Handle JSON Web Token authentication requests.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"

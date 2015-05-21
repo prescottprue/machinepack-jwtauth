@@ -29,7 +29,7 @@ module.exports = {
       description:'Example of expected token object to make available in output. Can be example object or a list/array of parameter names.'
     },
     headerPrefix:{
-      friendlyName: 'Prefix'
+      friendlyName: 'Prefix',
       example: 'Bearer ',
       description: 'Prefix attached to token within header value. This is only nessesary if you have set a prefix within the request.'
     },
@@ -44,10 +44,10 @@ module.exports = {
 
   exits: {
     error: {
-      description: 'Unexpected error occurred while decoding JWT.',
+      description: 'Unexpected error occurred while decoding JWT.'
     },
     nullHeader:{
-      description: 'No header with that name present on request.'
+      description: 'No header with that name present within the request.'
     },
     success: {
       description: 'Token decoded successfully from header.',
