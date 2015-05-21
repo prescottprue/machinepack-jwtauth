@@ -12,22 +12,31 @@ module.exports = {
 
   inputs: {
     header: {
+      friendlyName: 'Header Name',
       example:'Authorization',
       description:'The name/key of the header from which to get the token string.',
       required: true
     },
     secret: {
+      friendlyName: 'Secret',
       example: 'abc123jdhs3h4js',
       description: 'Secret used to decode the JSON web token.',
       required: true
     },
-    algorithm:{
-      example:'HS256',
-      description:'The type of algorithm that is used to decode the JWT. Options: HS256, HS384, HS512 and RS256. Make sure to use the same algorithm that you used to encode the JWT.'
+    schema:{
+      friendlyName: 'Schema',
+      typeclass:'*',
+      description:'Example of expected token object to make available in output. Can be example object or a list/array of parameter names.'
     },
     headerPrefix:{
+      friendlyName: 'Prefix'
       example: 'Bearer ',
       description: 'Prefix attached to token within header value. This is only nessesary if you have set a prefix within the request.'
+    },
+    algorithm:{
+      friendlyName: 'Algorithm',
+      example:'HS256',
+      description:'The type of algorithm that is used to decode the JWT. Options: HS256, HS384, HS512 and RS256. Make sure to use the same algorithm that you used to encode the JWT.'
     }
   },
 
@@ -42,38 +51,48 @@ module.exports = {
     },
     success: {
       description: 'Token decoded successfully from header.',
-      example:{
-        email:"test@test.com", 
-        name:"test"
-      },
-      hasDynamicOutputType:true
+      hasDynamicOutputType:true,
+      getExample:function (inputs){
+        // Example schema
+        var defaultObj = {id:"abc123", email:"example@example.com", role:"user", sessionId:"abc123"};
+        if(!inputs.schema) return defaultObj;
+        // Handle a array of parameters
+        if(_.isArray(inputs.schema)){
+          return arrayToExample(inputs.schema);
+        }
+        // Handle a list of parameters
+        if(_.isString(inputs.schema)){
+          var paramsArray = inputs.schema.split(",");
+          return arrayToExample(paramsArray);
+        }
+        // schema is an object
+        return inputs.schema;
+      }
     }
-
   },
 
 
   fn: function (inputs, exits, env) {
     var jwtMachine = require('machinepack-jwt');
-    
-    var headerVal = env.req.get(inputs.header);
 
-    if(headerVal){
-      if(inputs.headerPrefix){
+    var headerVal = env.req.get(inputs.header);
+    var decodeParams = {secret:inputs.secret};
+
+    if(headerVal){ //Check that value exists for header
+      if(inputs.algorithm){ //Add algorithm if it exists
+        decodeParams.algorithm = inputs.algorithm;
+      }
+      if(inputs.headerPrefix){ //Remove prefix from header if headerPrefix exists
         headerVal.replace(inputs.headerPrefix, ""); //Remove prefix to leave token string
+        decodeParams.token = headerVal;
       }
       try{
-        t = jwtMachine.decode({secret:inputs.secret, token:headerVal});
+        return exits.success(jwtMachine.decode(decodeParams));
       } catch(err){
-        exits.error(err);
+        return exits.error(err);
       }
-      if(t && typeof t == "object"){
-        return exits.success(t);
-      }
-      return exits.error(new Error('Invalid Token'));
     }
     return exits.nullHeader(); //Header does not exist
   },
-
-
 
 };
